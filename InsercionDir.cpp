@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int InsercionDir(int A[],int b){
+void InsercionDir(int A[],int b){
 	for(int i=1; i<b; i++){
 		int aux=A[i];
 		int c=i-1;
@@ -14,11 +14,11 @@ int InsercionDir(int A[],int b){
 	}
 }
 
-int InsercionBin(int A[],int b){
+void InsercionBin(int A[],int b){
 	for(int i=1;i<b;i++){
 		int aux = A[i];
-		int izq = 1;
-		int der = i - 1;
+		int izq = 0;
+		int der = i - 2;
 		while(izq<=der){
 			int m = (izq + der)/2;
 			if(aux<A[m]){
@@ -38,18 +38,35 @@ int InsercionBin(int A[],int b){
 
 int main(){
 	int cant;
+	int select;
 	cout<<"ingrese la cantidad de numeros: ";
 	cin>>cant;
 	int arreglo[cant];
-	for(int m=0; m < cant ; m++){
-		cout<<"num "<<m+1<<": ";
-		cin>>arreglo[m];
-	}
-	InsercionBin(arreglo , cant);
 	
-	cout<<" su forma ordenada es: "<<endl;
-	for(int n=0; n < cant ; n++){
-		cout<<"num "<<n+1<<": "<<arreglo[n]<<endl;
+	for(int x=0; x < cant ; x++){
+		cout<<" num"<<x+1<<": ";
+		cin>>arreglo[x];
+	}
+	                             
+	cout<<" Escoja el metodo de ordenacion: "<<endl<<" 1.- metodo Insercion Directa"<<endl<<" 2.- metodo Insercion Binaria"<<endl;
+	cin>>select;
+	switch(select){
+		case 1:
+			InsercionDir(arreglo , cant);
+			cout<<" su forma ordenada es: "<<endl;
+			for(int n=0; n < cant ; n++){
+				cout<<"num "<<n+1<<": "<<arreglo[n]<<endl;
+			}
+			break;
+		case 2:
+			InsercionBin(arreglo , cant);
+			cout<<" su forma ordenada es: "<<endl;
+			for(int n=0; n < cant ; n++){
+				cout<<"num "<<n+1<<": "<<arreglo[n]<<endl;
+			}
+			break;
+		default:
+			cout<<"escoger bien la opcion";
 	}
 	return 0;
 }
