@@ -2,18 +2,18 @@
 
 using namespace std;
 
-int aux;
-
-int interdirder(int a[], int b){
-	
-	for(int i=0;i<b-2;i++){
-		for(int j=0;j<b-i-1;j++){
-			if(a[j]>a[j+1]){
-				aux=a[j];
-				a[j]=a[j+1];
-				a[j+1]=aux;
+int SeleccionDir(int A[],int b){
+	for(int i=0; i<b-1 ; i++){
+		int menor = A[i];
+		int c=i;
+		for(int j=i;j<b;j++){
+			if(A[j]<menor){
+				menor = A[j];
+				c=j;
 			}
 		}
+		A[c]= A[i];
+		A[i]= menor;
 	}
 }
 
@@ -26,7 +26,7 @@ int main(){
 		cout<<"num "<<m+1<<": ";
 		cin>>arreglo[m];
 	}
-	interdirder(arreglo , cant);
+	SeleccionDir(arreglo , cant);
 	
 	for(int n=0; n < cant ; n++){
 		cout<<"num "<<n+1<<": "<<arreglo[n]<<endl;
